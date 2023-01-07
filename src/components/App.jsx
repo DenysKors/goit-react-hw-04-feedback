@@ -9,16 +9,18 @@ export function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const options = ['good', 'neutral', 'bad'];
+
   const manualAdd = option => {
     switch (option) {
       case 'good':
-        setGood(prevState => prevState + 1);
+        setGood(prevGood => prevGood + 1);
         break;
       case 'neutral':
-        setNeutral(prevState => prevState + 1);
+        setNeutral(prevNeutral => prevNeutral + 1);
         break;
       case 'bad':
-        setBad(prevState => prevState + 1);
+        setBad(prevBad => prevBad + 1);
         break;
       default:
         return;
@@ -37,9 +39,8 @@ export function App() {
     return Math.round((100 * good) / totalValue);
   };
 
-  const options = ['good', 'neutral', 'bad'];
-
   const totalQuantity = countTotalFeedback();
+
   let statistics;
 
   if (totalQuantity === 0) {
